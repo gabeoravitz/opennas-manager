@@ -2,9 +2,11 @@ FROM node:18-alpine AS builder
 
 WORKDIR /app
 
+# Copy backend package files
 COPY package*.json ./
 RUN npm ci
 
+# Copy backend source
 COPY . .
 RUN npm run build
 
@@ -12,6 +14,7 @@ FROM node:18-alpine
 
 WORKDIR /app
 
+# Copy backend package files
 COPY package*.json ./
 RUN npm ci --only=production
 
