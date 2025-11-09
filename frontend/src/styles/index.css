@@ -1,0 +1,189 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+
+  html {
+    @apply h-full;
+  }
+
+  body {
+    @apply h-full bg-background-secondary font-sans text-gray-900 antialiased;
+  }
+
+  #root {
+    @apply h-full;
+  }
+
+  /* Scrollbar styling to match DSM */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded bg-gray-400 hover:bg-gray-500;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-primary-100 text-primary-900;
+  }
+}
+
+@layer components {
+  /* DSM Button Styles */
+  .btn {
+    @apply inline-flex items-center justify-center rounded px-4 py-2 text-sm font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary-500 text-white hover:bg-primary-600 focus:ring-primary-500;
+  }
+
+  .btn-secondary {
+    @apply btn border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus:ring-primary-500;
+  }
+
+  .btn-danger {
+    @apply btn bg-error-500 text-white hover:bg-error-600 focus:ring-error-500;
+  }
+
+  .btn-ghost {
+    @apply btn text-gray-700 hover:bg-gray-100 focus:ring-primary-500;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  /* DSM Input Styles */
+  .input {
+    @apply block w-full rounded border border-gray-300 px-3 py-2 text-sm placeholder-gray-400 shadow-sm transition-colors focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 disabled:cursor-not-allowed disabled:bg-gray-50 disabled:text-gray-500;
+  }
+
+  .input-error {
+    @apply border-error-500 focus:border-error-500 focus:ring-error-500;
+  }
+
+  /* DSM Card Styles */
+  .card {
+    @apply rounded-lg border border-gray-200 bg-white shadow-dsm-card;
+  }
+
+  .card-header {
+    @apply border-b border-gray-200 px-6 py-4;
+  }
+
+  .card-body {
+    @apply px-6 py-4;
+  }
+
+  .card-footer {
+    @apply border-t border-gray-200 px-6 py-4;
+  }
+
+  /* DSM Table Styles */
+  .table {
+    @apply w-full text-left text-sm;
+  }
+
+  .table thead {
+    @apply border-b border-gray-200 bg-gray-50;
+  }
+
+  .table th {
+    @apply px-4 py-3 font-medium text-gray-700;
+  }
+
+  .table td {
+    @apply border-b border-gray-100 px-4 py-3 text-gray-900;
+  }
+
+  .table tbody tr:hover {
+    @apply bg-gray-50;
+  }
+
+  /* DSM Badge Styles */
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  .badge-primary {
+    @apply bg-primary-100 text-primary-700;
+  }
+
+  .badge-success {
+    @apply bg-success-100 text-success-700;
+  }
+
+  .badge-warning {
+    @apply bg-warning-100 text-warning-700;
+  }
+
+  .badge-error {
+    @apply bg-error-100 text-error-700;
+  }
+
+  .badge-gray {
+    @apply bg-gray-100 text-gray-700;
+  }
+
+  /* DSM Modal Overlay */
+  .modal-overlay {
+    @apply fixed inset-0 z-modal-backdrop bg-black/50 backdrop-blur-sm;
+  }
+
+  /* DSM Dropdown */
+  .dropdown-menu {
+    @apply absolute z-dropdown mt-2 min-w-[12rem] rounded-lg border border-gray-200 bg-white py-1 shadow-dsm-dropdown;
+  }
+
+  .dropdown-item {
+    @apply flex w-full items-center px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50 focus:bg-gray-50 focus:outline-none;
+  }
+
+  /* DSM Sidebar */
+  .sidebar {
+    @apply fixed left-0 top-0 z-fixed h-full w-64 border-r border-gray-200 bg-white;
+  }
+
+  .sidebar-item {
+    @apply flex items-center px-4 py-2.5 text-sm text-gray-700 transition-colors hover:bg-gray-50;
+  }
+
+  .sidebar-item-active {
+    @apply bg-primary-50 text-primary-600 hover:bg-primary-100;
+  }
+
+  /* Loading Spinner */
+  .spinner {
+    @apply h-5 w-5 animate-spin rounded-full border-2 border-gray-300 border-t-primary-500;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}

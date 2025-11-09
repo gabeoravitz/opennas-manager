@@ -1,0 +1,84 @@
+{
+  "name": "opennas-manager",
+  "version": "1.0.0",
+  "description": "Open-source implementation of Synology DSM 7.2",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "install:all": "npm install && npm run install:frontend && npm run install:backend",
+    "install:frontend": "cd frontend && npm install",
+    "install:backend": "cd backend && npm install",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run start:dev",
+    "build": "npm run build:backend && npm run build:frontend",
+    "build:frontend": "cd frontend && npm run build",
+    "build:backend": "cd backend && npm run build",
+    "test": "npm run test:backend && npm run test:frontend && npm run test:e2e",
+    "test:unit": "npm run test:backend && npm run test:frontend",
+    "test:frontend": "cd frontend && npm run test",
+    "test:backend": "cd backend && npm run test",
+    "test:integration": "cd backend && npm run test:e2e",
+    "test:e2e": "cd e2e && npm run test",
+    "test:e2e:ui": "cd e2e && npm run test:ui",
+    "test:coverage": "npm run test:backend -- --coverage && npm run test:frontend -- --coverage",
+    "test:watch": "concurrently \"npm run test:backend -- --watch\" \"npm run test:frontend -- --watch\"",
+    "test:visual": "cd e2e && npm run test:visual",
+    "lint": "npm run lint:frontend && npm run lint:backend",
+    "lint:frontend": "cd frontend && npm run lint",
+    "lint:backend": "cd backend && npm run lint",
+    "lint:fix": "npm run lint:frontend -- --fix && npm run lint:backend -- --fix",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "migrate": "cd backend && npm run migration:run",
+    "migrate:create": "cd backend && npm run migration:create",
+    "migrate:revert": "cd backend && npm run migration:revert",
+    "seed": "cd backend && npm run seed",
+    "storybook": "cd frontend && npm run storybook",
+    "build-storybook": "cd frontend && npm run build-storybook",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:build": "docker-compose build",
+    "docker:logs": "docker-compose logs -f",
+    "docker:prod": "docker-compose -f docker-compose.prod.yml up -d",
+    "prepare": "husky install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "concurrently": "^8.2.2",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "prettier": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/opennas-manager"
+  },
+  "keywords": [
+    "nas",
+    "synology",
+    "dsm",
+    "file-management",
+    "storage",
+    "network-storage"
+  ],
+  "author": "OpenNAS Community",
+  "license": "MIT",
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md}": [
+      "prettier --write"
+    ]
+  }
+}
